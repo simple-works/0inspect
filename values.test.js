@@ -17,20 +17,26 @@ module.exports = {
     null,
     {},
     {
-      a: "A",
-      b: "B",
-      c: {
-        x: "X",
-        z() {
+      attrA: "A",
+      attrB: "B",
+      attrC: {
+        cAttrX: "X",
+        cFuncZ() {
           return "Z";
         },
       },
-      o() {
+      set sttrA(val) {
+        this.a = val;
+      },
+      get gttrA() {
+        return this.a;
+      },
+      funcO() {
         return "O";
       },
     },
     new Object(),
-    new Object({ a: "A", b: "B" }),
+    new Object({ attrA: "A", attrB: "B" }),
   ],
   arrays: [
     [],
@@ -40,22 +46,25 @@ module.exports = {
     [undefined, null, {}],
     [
       {
-        a: "A",
-        b: "B",
-        c: {
-          x: "X",
-          z() {
+        attrA: "A",
+        attrB: "B",
+        attrC: {
+          cAttrX: "X",
+          cFuncZ() {
             return "Z";
           },
         },
-        o() {
+        get gttrX() {
+          return "X";
+        },
+        funcO() {
           return "O";
         },
       },
       null,
       {
-        a: "A",
-        b: "B",
+        attrM: "M",
+        attrN: "N",
       },
     ],
   ],
@@ -63,7 +72,7 @@ module.exports = {
     () => {},
     () => "Peaceful arrow function",
     function () {},
-    function fn() {},
+    function emptyFn() {},
     function fn() {
       return "Peaceful function";
     },

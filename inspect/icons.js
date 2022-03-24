@@ -1,29 +1,31 @@
-///══════════════════════════════════════════════════════════════════════════════
-// ■ Test (test.js)
-//┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
-//     This file is for test purposes only.
 //══════════════════════════════════════════════════════════════════════════════
-const inspect = require("./index");
-const values = require("./values.test");
+// ■ Icons (icons.js)
+//┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+//     UTF-8 special characters used as icons.
+//══════════════════════════════════════════════════════════════════════════════
 
 //──────────────────────────────────────────────────────────────────────────────
-// ● Test
+// ● Icons
 //──────────────────────────────────────────────────────────────────────────────
-function test() {
-  for (const key in values) {
-    // if (key !== "objects") continue;
-    console.log("─".repeat(80));
-    console.log("■", key, ":");
-    console.log("-".repeat(80));
-    for (const value of values[key]) {
-      inspect(value);
-    }
-    console.log();
-  }
-}
+const icons = {
+  primitive: {
+    full: "◆", // Black Diamond
+    empty: "◇", // WhiteDiamond
+  },
+  object: {
+    full: "●", // Black Circle
+    empty: "○", // White Circle
+    special: "◉", // Fisheye
+  },
+  misc: {
+    yes: "✓", // Check Mark
+    no: "✕", // Multiplication X
+    na: "Ø", //  Ballot Box With X
+    is: "→" // Rightwards Arrow
+  },
+};
 
 //──────────────────────────────────────────────────────────────────────────────
-// ► Execute
+// ► Exports
 //──────────────────────────────────────────────────────────────────────────────
-process.stdout.write("\x1Bc");
-test();
+module.exports = icons;

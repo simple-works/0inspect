@@ -3,14 +3,18 @@
 //┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 //     Pretty string representation of object.
 //══════════════════════════════════════════════════════════════════════════════
-const check  = require("check-types");
-const chalk = require("chalk");
+const stringify = require("./inspect/stringify");
 
 //──────────────────────────────────────────────────────────────────────────────
 // ● Inspect
 //──────────────────────────────────────────────────────────────────────────────
-function inspect(obj, options = {}) {
-  console.log(obj);
+function inspect(obj, depth = 10) {
+  console.log(str`${obj}`);
+  // if (typeof obj === "object") {
+  //   for (const key in obj) {
+  //     console.log(str`${obj[key]}${key}`);
+  //   }
+  // }
 }
 
 //──────────────────────────────────────────────────────────────────────────────
