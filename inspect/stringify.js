@@ -13,10 +13,13 @@ const icons = require("./icons");
 // ● Stringify
 //──────────────────────────────────────────────────────────────────────────────
 function stringify(obj, options = {}) {
-  const { name = "", depth = 10 } = options;
+  const { name = "", depth = 10, tab = {} } = options;
   check.assert.string(name);
   check.assert.integer(depth);
   check.assert.greaterOrEqual(depth, 0);
+  check.assert.object(tab);
+  if (check.not.integer(tab.char)) tab.char = "   ";
+  if (check.not.integer(tab.length)) tab.length = 1;
   const { category, type, className, string, icon, color, subColor } =
     reflect(obj);
   const prefix = chalk`{${color} ${icon}}`;
@@ -24,13 +27,17 @@ function stringify(obj, options = {}) {
     className || icons.misc.na
   }}`;
   const value = chalk`{${color} ${string}}`;
-  let resultString = `${prefix} ${key} ${icons.misc.is} ${value} ${EOL}`;
-  if (type === "object") {
+  let resultString = `${prefix} ${key} ${icons.misc.is} ${value}`;
+  if (depth > 0 && type === "object") {
     for (const key in obj) {
-      if (depth > 0) {
-        resultString += "   ";
-        resultString += stringify(obj[key], { name: key, depth: depth - 1 });
-      }
+      resultString += `${EOL}${tab.char.repeat(tab.length)}`;
+      resultString += stringify(obj[key], {
+        name: key,
+        depth: depth - 1,
+        tab: {
+          length: tab.length + 1,
+        },
+      });
     }
   }
   return resultString;

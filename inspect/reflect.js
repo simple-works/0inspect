@@ -51,6 +51,18 @@ function reflect(arg, options = {}) {
 }
 
 //──────────────────────────────────────────────────────────────────────────────
+// ● Check-Accessors
+//──────────────────────────────────────────────────────────────────────────────
+function checkAccessors(obj, key) {
+  const propDesc = Object.getOwnPropertyDescriptor(obj, key);
+  return {
+    all: !("value" in propDesc),
+    getter: ("get" in propDesc) && propDesc.get,
+    setter: ("set" in propDesc) && propDesc.set
+  }
+}
+
+//──────────────────────────────────────────────────────────────────────────────
 // ► Exports
 //──────────────────────────────────────────────────────────────────────────────
 module.exports = reflect;

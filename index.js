@@ -9,12 +9,7 @@ const stringify = require("./inspect/stringify");
 // ● Inspect
 //──────────────────────────────────────────────────────────────────────────────
 function inspect(obj, depth = 10) {
-  console.log(str`${obj}`);
-  // if (typeof obj === "object") {
-  //   for (const key in obj) {
-  //     console.log(str`${obj[key]}${key}`);
-  //   }
-  // }
+  console.log(stringify(obj)); // To do: Fix getters/setters display
 }
 
 //──────────────────────────────────────────────────────────────────────────────
