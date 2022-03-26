@@ -3,7 +3,7 @@
 //┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 //     Retrieve information about data types.
 //══════════════════════════════════════════════════════════════════════════════
-const check = require("check-types");
+const { check } = require("./utils");
 const style = require("./style");
 
 //──────────────────────────────────────────────────────────────────────────────
@@ -14,11 +14,11 @@ function reflect(arg, options = {}) {
   const { style: stylize = true } = options;
   const reflection = {
     value: undefined,
-    type: "",
     assigned: false,
+    empty: false,
+    type: "",
     className: "",
     category: "",
-    empty: "",
     string: "",
   };
   reflection.value = arg;
@@ -43,7 +43,7 @@ function reflect(arg, options = {}) {
     reflection.category = "function";
     reflection.string = arg.name ? `${arg.name}()` : `(anonymous)()`;
   } else {
-    reflection.category = "object";
+    reflection.category = "?";
     reflection.empty = false;
     reflection.string = check.string(arg.valueOf()) ? `"${arg}"` : String(arg);
   }
@@ -57,9 +57,9 @@ function checkAccessors(obj, key) {
   const propDesc = Object.getOwnPropertyDescriptor(obj, key);
   return {
     all: !("value" in propDesc),
-    getter: ("get" in propDesc) && propDesc.get,
-    setter: ("set" in propDesc) && propDesc.set
-  }
+    getter: "get" in propDesc && propDesc.get,
+    setter: "set" in propDesc && propDesc.set,
+  };
 }
 
 //──────────────────────────────────────────────────────────────────────────────

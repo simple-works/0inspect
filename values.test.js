@@ -10,7 +10,18 @@
 module.exports = {
   void: [undefined],
   booleans: [false, true, new Boolean(), new Boolean("Peace")],
-  numbers: [0, 7_000_000_000, new Number(), new Number(7), Infinity, NaN],
+  numbers: [
+    0,
+    0n,
+    7_000_000_000,
+    7_000_000_000n,
+    new Number(),
+    new Number(7),
+    BigInt(0),
+    BigInt(7),
+    Infinity,
+    NaN,
+  ],
   strings: ["", "Peace upon You!", new String(), new String("Peace")],
   symbols: [Symbol(), Symbol("Be in Peace :)")],
   objects: [

@@ -9,7 +9,7 @@ const stringify = require("./inspect/stringify");
 // ● Inspect
 //──────────────────────────────────────────────────────────────────────────────
 function inspect(obj, depth = 10) {
-  console.log(stringify(obj)); // To do: Fix getters/setters display
+  return stringify(obj, { depth });
 }
 
 //──────────────────────────────────────────────────────────────────────────────
