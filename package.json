@@ -4,7 +4,7 @@
   "description": "Pretty string representation of object",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon test.js"
+    "test": "nodemon ./test"
   },
   "keywords": [
     "inspect",
