@@ -17,20 +17,30 @@ function style(reflection) {
     subColor: "",
   };
   if (reflection.type === "object") {
-    style.icon = reflection.empty ? icons.object.empty : icons.object.full;
+    if (reflection.empty) {
+      style.icon = icons.object.empty;
+      style.color = "yellow";
+      style.subColor = "yellowBright";
+    } else {
+      style.icon = icons.object.full;
+      style.color = "cyan";
+      style.subColor = "cyanBright";
+    }
   } else if (reflection.type === "function") {
     style.icon = icons.object.special;
+    style.color = "magenta";
+    style.subColor = "magentaBright";
   } else {
-    style.icon = reflection.empty
-      ? icons.primitive.empty
-      : icons.primitive.full;
-  }
-  if (reflection.empty) {
-    style.color = "red";
-    style.subColor = "redBright";
-  } else {
-    style.color = "green";
-    style.subColor = "greenBright";
+    if (reflection.empty) {
+      style.icon = icons.primitive.empty;
+      style.color = "red";
+      style.subColor = "redBright";
+    } else {
+      style.icon = icons.primitive.full;
+      style.color = "green";
+      style.subColor = "greenBright";
+    }
+
   }
   return { ...reflection, ...style };
 }

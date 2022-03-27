@@ -11,7 +11,7 @@ class Rectangle {
   _width = 0;
   _height = 0;
   _position = { x: 0, y: 0 };
-  // _childs = [ new Rectangle(), new Rectangle(), new Rectangle() ];
+  _childs = [];
   constructor(width, height) {
     this.width = width;
     this.height = height;
@@ -53,20 +53,28 @@ class Rectangle {
     return `Rectangle`;
   }
 }
+exports.Rectangle = Rectangle;
 
 //──────────────────────────────────────────────────────────────────────────────
 // ● Rectangle-Class-Instance
 //──────────────────────────────────────────────────────────────────────────────
-exports.rectInstObj = new Rectangle(128, 32);
+exports.instObj = new Rectangle(128, 32);
+exports.instObj._childs = [
+  new Rectangle(1, 1),
+  new Rectangle(2, 2),
+  new Rectangle(4, 4),
+  new Rectangle(8, 8),
+  new Rectangle(16, 16),
+];
 
 //──────────────────────────────────────────────────────────────────────────────
 // ● Rectangle-Litteral-Object
 //──────────────────────────────────────────────────────────────────────────────
-exports.rectLittObj = {
+exports.littObj = {
   _width: 64,
   _height: 16,
   _position: { x: 0, y: 0 },
-  _childs: [ new Rectangle(), new Rectangle(), new Rectangle() ],
+  _childs: [new Rectangle(), new Rectangle(), new Rectangle()],
   set width(value) {
     if (typeof value === "number" && value >= 0) {
       this._width = value;
@@ -102,5 +110,5 @@ exports.rectLittObj = {
     if (hint === "number") return this.area;
     if (hint === "string") return `${this.width}x${this.height}`;
     return "Rectangle";
-  }
-}
+  },
+};

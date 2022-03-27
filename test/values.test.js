@@ -3,7 +3,7 @@
 //┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 //     Test values from all data types.
 //══════════════════════════════════════════════════════════════════════════════
-const { rectInstObj, rectLittObj } = require("./objects.test");
+const { Rectangle, instObj, littObj } = require("./objects.test");
 
 //──────────────────────────────────────────────────────────────────────────────
 // ► Void
@@ -64,13 +64,13 @@ exports.symbols = [Symbol(), Symbol("Symbol of Peace")];
 exports.objects = [
   null,
   {},
-  rectLittObj,
-  rectInstObj,
+  littObj,
+  instObj,
   Object(),
-  Object(rectLittObj),
-  Object(rectInstObj),
-  new Object(rectLittObj),
-  new Object(rectInstObj),
+  Object(littObj),
+  Object(instObj),
+  new Object(littObj),
+  new Object(instObj),
 ];
 
 //──────────────────────────────────────────────────────────────────────────────
@@ -86,8 +86,8 @@ exports.arrays = [
     undefined,
     null,
     {},
-    rectLittObj,
-    rectInstObj,
+    littObj,
+    instObj,
   ],
 ];
 
