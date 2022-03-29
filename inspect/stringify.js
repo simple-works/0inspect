@@ -11,7 +11,7 @@ const icons = require("./icons");
 // ● Stringify
 //──────────────────────────────────────────────────────────────────────────────
 function stringify(obj, options = {}) {
-  const { name = "", depth = 10, tab = {} } = options;
+  const { name = "", tag = "", depth = 10, tab = {} } = options;
   check.assert.string(name);
   check.assert.integer(depth);
   check.assert.greaterOrEqual(depth, 0);
@@ -21,7 +21,7 @@ function stringify(obj, options = {}) {
   const { category, type, className, string, icon, color, subColor } =
     reflect(obj);
   const prefix = chalk`{${color} ${icon}}`;
-  const key = chalk`{${subColor} ${name ? `${name} : ` : ""}${
+  const key = chalk`{${subColor} ${tag ? `[${tag}] ` : ""}${name ? `${name} : ` : ""}${
     className || icons.misc.na
   }}`;
   const value = chalk`{${color} ${string}}`;
@@ -31,6 +31,7 @@ function stringify(obj, options = {}) {
       resultString += `${EOL}${tab.char.repeat(tab.length)}`;
       resultString += stringify(obj[key], {
         name: key,
+        tag: check.accessor(obj, key),
         depth: depth - 1,
         tab: {
           length: tab.length + 1,

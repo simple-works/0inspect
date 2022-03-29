@@ -21,11 +21,12 @@ check.primitive = (function (checkPrimitive) {
 //──────────────────────────────────────────────────────────────────────────────
 check.accessor = function accessor(obj, key) {
   const propDesc = Object.getOwnPropertyDescriptor(obj, key);
-  return {
-    both: Boolean(propDesc && !("value" in propDesc)),
-    getter: Boolean(propDesc && propDesc.get),
-    setter: Boolean(propDesc && propDesc.set)
-  }
+  const hasGetter = Boolean(propDesc && propDesc.get);
+  const hasSetter = Boolean(propDesc && propDesc.set);
+  if (hasGetter && hasSetter) return "get/set";
+  else if (hasGetter) return "get";
+  else if (hasSetter) return "set";
+  else return "";
 };
 
 //──────────────────────────────────────────────────────────────────────────────

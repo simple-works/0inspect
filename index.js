@@ -4,12 +4,23 @@
 //     Pretty string representation of object.
 //══════════════════════════════════════════════════════════════════════════════
 const stringify = require("./inspect/stringify");
+const { check } = require("./inspect/utils");
 
 //──────────────────────────────────────────────────────────────────────────────
 // ● Inspect
 //──────────────────────────────────────────────────────────────────────────────
-function inspect(obj, depth = 10) {
+function inspect(obj, options = {}) {
+  check.assert.maybe.object(options);
+  const { depth = 10 } = options;
   return stringify(obj, { depth });
+}
+inspect.inspect = inspect;
+
+//──────────────────────────────────────────────────────────────────────────────
+// ● Log
+//──────────────────────────────────────────────────────────────────────────────
+inspect.log = function log(obj, options = {}) {
+  console.log(inspect(obj, options));
 }
 
 //──────────────────────────────────────────────────────────────────────────────

@@ -16,7 +16,7 @@ function test() {
     console.log("■", key, ":");
     console.log("-".repeat(80));
     for (const value of values[key]) {
-      console.log(inspect(value));
+      inspect.log(value);
     }
     console.log();
   }

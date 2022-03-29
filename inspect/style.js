@@ -16,7 +16,7 @@ function style(reflection) {
     color: "",
     subColor: "",
   };
-  if (reflection.type === "object") {
+  if (reflection.category === "object" || reflection.category === "array") {
     if (reflection.empty) {
       style.icon = icons.object.empty;
       style.color = "yellow";
@@ -26,7 +26,7 @@ function style(reflection) {
       style.color = "cyan";
       style.subColor = "cyanBright";
     }
-  } else if (reflection.type === "function") {
+  } else if (reflection.category === "function") {
     style.icon = icons.object.special;
     style.color = "magenta";
     style.subColor = "magentaBright";

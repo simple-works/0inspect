@@ -74,7 +74,7 @@ exports.littObj = {
   _width: 64,
   _height: 16,
   _position: { x: 0, y: 0 },
-  _childs: [new Rectangle(), new Rectangle(), new Rectangle()],
+  // _childs: [new Rectangle(), new Rectangle(), new Rectangle()],
   set width(value) {
     if (typeof value === "number" && value >= 0) {
       this._width = value;
