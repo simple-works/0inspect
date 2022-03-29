@@ -39,6 +39,14 @@ inspect.log(someObj);
 
 ## 🎨 Colors
 
+| Color   | Meaning          |
+| ------- | ---------------- |
+| Green   | Truthy Primitive |
+| Red     | Falsy Primitive  |
+| Cyan    | Full Object      |
+| Yellow  | Empty Object     |
+| Magenta | Function         |
+
 As this is using [Chalk](https://github.com/chalk) for console colors, the color support control is automatic, but you can still override it this way:
 
 ```js
@@ -48,17 +56,28 @@ chalk.level = 0; // No color
 
 💡 See: [chalk # chalk.level](https://github.com/chalk/chalk#chalklevel)
 
-## 📍 Symbols
+## 🔣 Symbols
 
-| Symbol | Meaning          | Example (Input) | Example (Output)             |
-| ------ | ---------------- | --------------- | ---------------------------- |
-| ◆      | Truthy Primitive | `1n`            | `◆ BigInt → 1`               |
-| ◇      | Falsy Primitive  | `NaN`           | `◇ Number → NaN`             |
-| ●      | Full Object      | `{ a:"" }`      | `● Object → {1}`             |
-| ○      | Empty Object     | `{}`            | `○ Object → {}`              |
-| ◉      | Function         | `() => ""`      | `◉ Function → (anonymous)()` |
-| Ø      | No Class         | `undefined`     | `◇ Ø → undefined`            |
+| Symbol | Meaning          |
+| ------ | ---------------- |
+| ◆      | Truthy Primitive |
+| ◇      | Falsy Primitive  |
+| ●      | Full Object      |
+| ○      | Empty Object     |
+| ◉      | Function         |
+| Ø      | No Class         |
 | →      | Value            |
+
+## 💠 Examples
+
+| Input       | Category         | Output                       | Output Color |
+| ----------- | ---------------- | ---------------------------- | ------------ |
+| `1n`        | Truthy Primitive | `◆ BigInt → 1`               | Green        |
+| `NaN`       | Falsy Primitive  | `◇ Number → NaN`             | Red          |
+| `undefined` | Falsy Primitive  | `◇ Ø → undefined`            | Red          |
+| `{ a:"" }`  | Full Object      | `● Object → {1}`             | Cyan         |
+| `{}`        | Empty Object     | `○ Object → {}`              | Yellow       |
+| `() => ""`  | Function         | `◉ Function → (anonymous)()` | Magenta      |
 
 # 📃 License
 
